@@ -287,7 +287,7 @@ Current direction after refinement:
 - the preflight also runs a lightweight smoke test and validates whether text can actually be extracted from the model response shape
 - a ready client result can be cached and reused for the current resolved host default model
 - response adapter selection can now be learned and cached per `provider/model` during smoke test and normal requests
-- when fixed adapters do not match, the controller can now try candidate text paths mined from the real raw response structure and cache the successful path-based adapter
+- when fixed adapters do not match, the controller can now try candidate text paths mined from the real raw response structure, score candidate paths, avoid metadata-only fields like `choices[0].message.role`, and cache the successful path-based adapter
 - if preflight/smoke-test parsing fails, the controller can now retry internal repair loops before surfacing a final failure
 - machine-local hardcoded provider assumptions should be avoided as much as possible
 
