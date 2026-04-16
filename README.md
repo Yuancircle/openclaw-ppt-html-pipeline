@@ -38,6 +38,15 @@ This gives you:
 - fewer "web page looking" outputs
 - easier review and rework
 
+
+## What this skill automates
+
+This skill is meant to reduce the manual burden of preparing page drafts from scratch. It can help you:
+- turn a rough presentation idea into page-by-page draft requirements
+- generate the detailed markdown drafts needed for the pipeline
+- run the pipeline automatically once the deck shape is clear
+- keep the final HTML aligned with the intended reporting style
+
 ## Why not generate HTML in one shot?
 
 Because one-shot generation often drifts in exactly the places that matter for presentation pages:
@@ -77,17 +86,30 @@ Not ideal if you only want:
 - **Controller-friendly**: works with page-by-page draft workflows
 - **OpenClaw-ready**: designed as a reusable production skill / pipeline
 
+## What this skill helps you do
+
+This skill is designed to help you go from a rough presentation need to a page-by-page production workflow.
+
+It can help you:
+- clarify the overall presentation goal
+- turn rough ideas into page-level requirements
+- generate or refine detailed markdown drafts page by page
+- call the blueprint / review / HTML pipeline automatically
+- keep the final output aligned with the original reporting intent
+
+You do **not** need to prepare a perfect detailed draft before starting. A rough topic, audience, and desired outcome is enough to begin.
+
 ## Quick start
 
 Typical workflow:
 
-1. Prepare one detailed markdown draft per page
-2. Make the page role, goal, content blocks, and visual constraints explicit
+1. Describe the deck goal, audience, and page count
+2. Let the skill help generate page-by-page detailed drafts
 3. Run the pipeline page by page
 4. Review blueprint output before HTML finalization
 5. Deliver the reviewed final HTML pages
 
-At minimum, each page draft should define:
+At minimum, the skill will try to clarify or produce:
 - page number
 - page title
 - page goal
@@ -127,26 +149,24 @@ This pipeline is especially useful for:
     └── validators.py
 ```
 
-## Expected input shape
+## Input style
 
-Each page should be described in a markdown draft using explicit fields such as:
-- page number
-- page title
-- page goal
-- previous / next page relation
-- style requirements
-- forbidden items
-- core content
-- hard rules
-- output path
+The skill works best when it can start from a rough brief and then help fill in the page-level details.
 
-The richer the page draft, the stronger the final result.
+Useful starting signals include:
+- the overall topic
+- target audience
+- expected number of pages
+- preferred tone / style
+- any must-include or must-avoid elements
+
+If page-level details are missing, the skill should help generate them first, then run the pipeline.
 
 ## Ideal workflow
 
-1. Confirm the deck structure with the user
-2. Create one detailed draft markdown per page
-3. Run pipeline per page
+1. Confirm the deck goal and audience with the user
+2. Let the skill generate or refine page-by-page draft markdown
+3. Run the pipeline page by page
 4. Let blueprint / review / HTML / review happen automatically
 5. Only intervene when the pipeline blocks or review fails
 6. Deliver reviewed final page HTML files
@@ -278,26 +298,35 @@ Recommended next assets for stronger conversion:
 - **适合逐页生产**：适合和详细页面草稿配合
 - **适合 OpenClaw 工作流**：可以作为生产级 skill / pipeline 使用
 
+## 这个 skill 会帮你做什么
+
+这个 skill 的目标，是把一个粗略的汇报需求，逐步变成可以执行的逐页生产流程。
+
+它可以帮你：
+- 明确整套汇报的目标和对象
+- 把粗略想法整理成逐页需求
+- 生成或补全每页的详细 markdown 草稿
+- 自动调用施工图 / 审核 / HTML 流水线
+- 保持最终结果不偏离原始汇报意图
+
+你**不需要**一开始就自己准备完美的详细需求稿；只要有一个大致主题、受众和目标，就可以先开始。
+
 ## 快速开始
 
 典型使用方式：
 
-1. 每页准备一份详细 markdown 需求稿
-2. 把页面角色、目标、核心内容、视觉约束写清楚
+1. 先说明整套汇报的目标、受众和页数
+2. 让 skill 帮你生成或补全逐页详细草稿
 3. 逐页运行流水线
 4. 先审施工图，再进入最终 HTML
 5. 输出审核后的最终页面
 
-最低建议字段：
-- 页码
-- 页面标题
-- 页面目标
-- 上下页关系
-- 风格要求
-- 禁用项
-- 核心内容
-- 硬规则
-- 输出路径
+最低建议输入包括：
+- 整体主题
+- 目标受众
+- 预计页数
+- 期望风格
+- 必须包含或必须避免的内容
 
 ## 示例场景
 
@@ -328,25 +357,23 @@ Recommended next assets for stronger conversion:
     └── validators.py
 ```
 
-## 输入建议
+## 输入风格
 
-每一页建议用 markdown 写清这些字段：
-- 页码
-- 页面标题
-- 页面目标
-- 上下页关系
-- 风格要求
-- 禁用项
-- 核心内容
-- 硬规则
-- 输出路径
+这个 skill 最适合先从粗略 brief 开始，再逐步补齐页级细节。
 
-详细需求稿越扎实，最终页面质量越高。
+如果页面细节还不够完整，skill 会先帮助补齐，再进入流水线。
+
+有用的起始信息包括：
+- 整体主题
+- 目标受众
+- 预计页数
+- 期望语气 / 风格
+- 必须包含或必须避免的元素
 
 ## 理想使用方式
 
 1. 先确认整套 PPT 结构
-2. 每页形成一份详细需求稿 markdown
+2. 让 skill 帮你生成或补全逐页详细草稿
 3. 逐页运行流水线
 4. 让施工图 / 审核 / HTML / 审核自动执行
 5. 只有在阻塞或审核失败时才人工介入
