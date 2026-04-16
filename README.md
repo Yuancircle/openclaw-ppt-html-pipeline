@@ -199,9 +199,9 @@ If you want HTML that feels like:
 
 this pipeline is built for that job.
 
-## Next improvements
+## Optional assets to add later
 
-Recommended next assets for stronger conversion:
+For stronger conversion, consider adding:
 - real screenshot gallery
 - before / after comparisons
 - one minimal example page draft
