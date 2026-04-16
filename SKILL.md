@@ -253,6 +253,9 @@ If the same page fails twice, do not brute-force rerun blindly. Fix the requirem
 - Do not default to topbars, nav bars, stacked web cards, hero sections, or product landing page patterns.
 - Prefer strong slide hierarchy, projection-friendly typography, and clear reading path.
 - If the page is sparse, fix the page structure; do not hide weak content behind decoration.
+- Do not let dense content collapse into overlapping lines: if the requested information cannot fit cleanly at the current granularity, split it into fewer words, shorter bullets, fewer on-slide items, or a different layout before generating the final HTML.
+- For roadmap/timeline pages, keep each stage compact and readable: no more than one short goal sentence, 2-3 task bullets, and 2-4 output bullets per stage unless the page draft explicitly requires otherwise.
+- Review must treat text collision, line overlap, and cramped vertical spacing as hard failures requiring layout repair.
 - When the page is part of a reviewed multi-page deck, page role and deck continuity matter as much as local prettiness.
 
 ## Recommended file organization
