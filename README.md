@@ -38,6 +38,22 @@ This gives you:
 - fewer "web page looking" outputs
 - easier review and rework
 
+## Why not generate HTML in one shot?
+
+Because one-shot generation often drifts in exactly the places that matter for presentation pages:
+- layout hierarchy becomes unstable
+- content blocks lose priority order
+- slide density becomes too sparse or too web-like
+- visual style drifts away from the original reporting intent
+
+This repository treats slide generation more like **page construction** than raw prompting.
+
+That is why it separates:
+- structure planning
+- structure review
+- HTML building
+- HTML review
+
 ## Best fit
 
 Use this when you need:
@@ -45,11 +61,13 @@ Use this when you need:
 - strategy / reporting slides
 - structured proposal pages
 - high-density single-page HTML with strong visual hierarchy
+- production-style page-by-page generation workflows
 
 Not ideal if you only want:
 - generic web pages
 - landing pages
 - lightweight modern UI cards
+- casual single-shot mockups
 
 ## Quick value summary
 
@@ -58,6 +76,37 @@ Not ideal if you only want:
 - **PPT-feel oriented**: optimized for serious presentation pages
 - **Controller-friendly**: works with page-by-page draft workflows
 - **OpenClaw-ready**: designed as a reusable production skill / pipeline
+
+## Quick start
+
+Typical workflow:
+
+1. Prepare one detailed markdown draft per page
+2. Make the page role, goal, content blocks, and visual constraints explicit
+3. Run the pipeline page by page
+4. Review blueprint output before HTML finalization
+5. Deliver the reviewed final HTML pages
+
+At minimum, each page draft should define:
+- page number
+- page title
+- page goal
+- previous / next page relation
+- style requirements
+- forbidden items
+- core content
+- hard rules
+- output path
+
+## Example use cases
+
+This pipeline is especially useful for:
+- leadership reporting decks
+- strategy proposal pages
+- technical architecture presentations
+- project milestone reviews
+- product planning / roadmap pages
+- AI-assisted PPT-like HTML production systems
 
 ## Repository structure
 
@@ -130,6 +179,15 @@ If you want HTML that feels like:
 
 this pipeline is built for that job.
 
+## Next improvements worth adding
+
+For stronger conversion and community interest, the best next upgrades are:
+- real screenshot gallery
+- before / after comparisons
+- one minimal example page draft
+- one minimal generated output example
+- short demo GIF or walkthrough video
+
 ---
 
 # PPT HTML Pipeline 中文版
@@ -180,6 +238,22 @@ this pipeline is built for that job.
 - 更少生成出“像网页不像汇报页”的结果
 - 更方便审核和返工
 
+## 为什么不直接一把梭生成 HTML？
+
+因为一把梭生成最容易在这些关键点上跑偏：
+- 页面层级不稳
+- 信息主次顺序被打乱
+- 页面密度太稀或者太像网页
+- 风格逐渐偏离原始汇报意图
+
+这个仓库把页面生成当成一种**页面施工过程**，而不是一次性提示词输出。
+
+所以它会明确拆开：
+- 结构规划
+- 结构审核
+- HTML 构建
+- HTML 审核
+
 ## 最适合什么场景
 
 适合：
@@ -188,11 +262,13 @@ this pipeline is built for that job.
 - 项目 / 产品阶段汇报页
 - 结构化提案页
 - 高信息密度的单页展示
+- 按页批量生产的正式汇报页面流程
 
 不太适合：
 - 普通网页
 - 落地页
 - 轻量卡片式现代 UI 页面
+- 随手快速出一个网页草稿
 
 ## 一句话价值总结
 
@@ -201,6 +277,37 @@ this pipeline is built for that job.
 - **明确追求 PPT 感**：不是泛泛的网页生成
 - **适合逐页生产**：适合和详细页面草稿配合
 - **适合 OpenClaw 工作流**：可以作为生产级 skill / pipeline 使用
+
+## 快速开始
+
+典型使用方式：
+
+1. 每页准备一份详细 markdown 需求稿
+2. 把页面角色、目标、核心内容、视觉约束写清楚
+3. 逐页运行流水线
+4. 先审施工图，再进入最终 HTML
+5. 输出审核后的最终页面
+
+最低建议字段：
+- 页码
+- 页面标题
+- 页面目标
+- 上下页关系
+- 风格要求
+- 禁用项
+- 核心内容
+- 硬规则
+- 输出路径
+
+## 示例场景
+
+这条流水线特别适合：
+- 领导汇报页面
+- 战略方案页面
+- 技术架构展示页
+- 项目阶段总结页
+- 产品规划 / 路线图页面
+- AI 辅助 PPT 风 HTML 生产系统
 
 ## 仓库结构
 
@@ -270,3 +377,12 @@ this pipeline is built for that job.
 - 真正像可以拿来讲方案的页面
 
 那这条流水线就是为这件事设计的。
+
+## 下一步最值得补什么
+
+如果你想让仓库更容易被理解、被转发、被 star，最值得继续补的是：
+- 真实效果截图
+- before / after 对比图
+- 一份最小输入示例
+- 一份最小输出示例
+- 一个简短演示 GIF 或视频
