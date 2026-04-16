@@ -179,9 +179,9 @@ If you want HTML that feels like:
 
 this pipeline is built for that job.
 
-## Next improvements worth adding
+## Next improvements
 
-For stronger conversion and community interest, the best next upgrades are:
+Recommended next assets for stronger conversion:
 - real screenshot gallery
 - before / after comparisons
 - one minimal example page draft
