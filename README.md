@@ -2,19 +2,25 @@
 
 [English](#ppt-html-pipeline) | [中文](#ppt-html-pipeline-中文版)
 
-Build **exceptionally polished PPT-style HTML slides** from page-by-page detailed requirement drafts.
+Build **presentation-grade PPT-style HTML slides** with a **blueprint -> review -> HTML -> review** pipeline.
 
-This repository packages a production-oriented pipeline for turning **single-slide planning docs** into **reviewed, presentation-grade HTML pages** with a strong PPT feel rather than generic web-page aesthetics.
+Designed for teams who want **serious slide pages**, not generic landing pages or dashboard-like web UI.
 
-## What it does
+## Why this exists
 
-PPT HTML Pipeline is designed for teams who want HTML slides that feel like:
-- mature executive presentation pages
-- projection-friendly report slides
-- high-density, high-clarity visual pages
-- structured, reviewable slide production outputs
+Most AI-generated "HTML slides" still look like:
+- landing pages
+- dashboards
+- card-based web layouts
+- overly empty modern UI
 
-Instead of directly prompting for HTML in one shot, this pipeline uses a staged flow:
+This project is built for a different target:
+
+> **HTML pages that feel like real presentation slides — dense, structured, reviewable, and ready for serious reporting.**
+
+## What makes it different
+
+Instead of generating HTML in one shot, this pipeline uses a staged workflow:
 
 ```text
 Detailed page draft
@@ -25,71 +31,33 @@ Detailed page draft
 -> final single-page HTML
 ```
 
-It also includes a controller-oriented front-door flow:
+This gives you:
+- better layout stability
+- clearer page hierarchy
+- stronger PPT feel
+- fewer "web page looking" outputs
+- easier review and rework
 
-```text
-LLM client preflight / bootstrap / repair
--> page-by-page detailed requirement drafts
--> per-page pipeline execution
--> reviewed final HTML pages
-```
+## Best fit
 
-## Why it is different
+Use this when you need:
+- executive presentation pages
+- strategy / reporting slides
+- structured proposal pages
+- high-density single-page HTML with strong visual hierarchy
 
-Most "HTML slide" generators produce something that still looks like:
+Not ideal if you only want:
+- generic web pages
 - landing pages
-- dashboards
-- card-based websites
-- over-spaced modern web UI
+- lightweight modern UI cards
 
-This project is explicitly optimized for **PPT-feel HTML**:
-- stronger page hierarchy
-- denser but controlled layouts
-- presentation-safe typography
-- executive-report visual language
-- fewer meaningless empty areas
-- less “website” feeling, more “serious slide” feeling
+## Quick value summary
 
-## Core strengths
-
-### 1. Page-by-page detailed requirement input
-The pipeline starts from **detailed page drafts**, not vague prompts.
-That means each slide can preserve:
-- page role in the deck
-- previous / next page relation
-- required information blocks
-- style direction
-- forbidden patterns
-- hard rules
-
-### 2. Blueprint-first workflow
-Before HTML is generated, the pipeline first creates a **construction blueprint** for the page.
-This forces structure and reduces layout drift.
-
-### 3. Review loops built into the pipeline
-The system does not just generate.
-It also reviews:
-- blueprint quality
-- HTML quality
-- PPT feeling
-- projection readability
-- consistency with page intent
-
-### 4. Automatic LLM client preflight
-Before the main slide workflow starts, the pipeline can:
-- check whether an LLM client is already ready
-- bootstrap one from the host OpenClaw default model config
-- run smoke tests
-- repair adapter selection internally
-- cache working client/adapters for reuse
-
-### 5. Better fit for real reporting scenarios
-This repository is especially useful when you need HTML pages for:
-- leadership reporting
-- internal strategy presentations
-- product / project milestone reviews
-- technical architecture reporting
-- structured proposal decks
+- **Blueprint-first**: structure before HTML
+- **Built-in review loops**: check quality before delivery
+- **PPT-feel oriented**: optimized for serious presentation pages
+- **Controller-friendly**: works with page-by-page draft workflows
+- **OpenClaw-ready**: designed as a reusable production skill / pipeline
 
 ## Repository structure
 
@@ -134,16 +102,26 @@ The richer the page draft, the stronger the final result.
 5. Only intervene when the pipeline blocks or review fails
 6. Deliver reviewed final page HTML files
 
+## Preview
+
+> Add screenshots / before-after comparisons here for better conversion.
+
+Recommended assets:
+- 1 full-page screenshot
+- 1 zoomed-in detail screenshot
+- 1 before/after comparison between generic HTML and PPT-style reviewed HTML
+
 ## Status
 
 This project already contains the core workflow, prompts, validators, and controller-facing conventions needed for a strong first production system.
 
 It is especially strong when the goal is:
+
 > **produce extremely high-quality PPT-style HTML pages, not ordinary web pages**
 
 ## Positioning
 
-If you want HTML that merely “looks modern,” many tools can do that.
+If you want HTML that merely "looks modern," many tools can do that.
 
 If you want HTML that feels like:
 - a real presentation slide
@@ -158,17 +136,31 @@ this pipeline is built for that job.
 
 [返回 English](#ppt-html-pipeline)
 
-把**逐页详细需求稿**稳定转成**极高质量的 PPT 风格 HTML 单页**。
+把 **PPT 风格 HTML 页面生成** 从“一把梭直接出网页”改成一条更稳定的流水线：
 
-这个仓库封装的是一套面向生产的流水线，不是“随便生成个网页页面”，而是把**单页策划稿 / 详细需求稿**转成**经过审核、适合汇报、具有成熟 PPT 感**的 HTML 页面。
+**逐页详细需求稿 -> 施工图 -> 审核 -> HTML -> 审核 -> 最终单页 HTML**
 
-## 它能做什么
+这个仓库面向的不是普通网页生成，而是：
 
-PPT HTML Pipeline 适合这类目标：
-- 做领导汇报页
-- 做投屏展示页
-- 做结构清晰、信息密度高的单页汇报 HTML
-- 做一整套可审查、可返工、可批量生产的页面流程
+> **生成真正像正式汇报页、像演示页、像领导可直接看的单页 HTML。**
+
+## 为什么会有这个项目
+
+大多数 AI 生成的“HTML 幻灯片”最后仍然很像：
+- 落地页
+- 仪表盘
+- 卡片网站
+- 留白过多的现代网页 UI
+
+而这个项目明确追求的是：
+- 更强的页面层级
+- 更成熟的 PPT 感
+- 更适合投屏的字号与密度
+- 更像正式汇报页的视觉语言
+- 更少无意义留白
+- 更低的网页感
+
+## 它为什么不一样
 
 它不是一把梭直接生成 HTML，而是走分阶段流程：
 
@@ -181,78 +173,34 @@ PPT HTML Pipeline 适合这类目标：
 -> 最终单页 HTML
 ```
 
-同时，它还包含主控前置流程：
+这样做的好处是：
+- 页面结构更稳
+- 视觉重心更清楚
+- PPT 感更强
+- 更少生成出“像网页不像汇报页”的结果
+- 更方便审核和返工
 
-```text
-LLM client 前置检查 / bootstrap / 修复
--> 逐页详细需求稿
--> 逐页执行流水线
--> 输出审核后的最终 HTML
-```
+## 最适合什么场景
 
-## 为什么它和普通 HTML 生成器不一样
+适合：
+- 领导汇报页
+- 战略方案页
+- 项目 / 产品阶段汇报页
+- 结构化提案页
+- 高信息密度的单页展示
 
-大多数“HTML 幻灯片”工具最后做出来的东西仍然很像：
+不太适合：
+- 普通网页
 - 落地页
-- 仪表盘
-- 卡片网站
-- 留白很大的现代网页 UI
+- 轻量卡片式现代 UI 页面
 
-而这个项目明确追求的是：
-- 更强的页面层级
-- 更成熟的 PPT 感
-- 适合投屏的字号与密度
-- 更像领导汇报页的视觉语言
-- 减少无意义留白
-- 明显降低“网页感”
+## 一句话价值总结
 
-## 核心优势
-
-### 1）逐页详细需求稿驱动
-流水线从**逐页详细需求稿**出发，而不是从一句模糊提示词出发。
-
-这样每一页都能保留：
-- 页面在整套汇报中的角色
-- 上下页关系
-- 必须出现的信息块
-- 风格方向
-- 禁止项
-- 特殊硬规则
-
-### 2）先施工图，后 HTML
-在生成 HTML 之前，流水线会先生成**施工图 / blueprint**。
-
-这样能明显减少页面跑偏，先把：
-- 结构
-- 视觉重心
-- 阅读路径
-- 版面骨架
-
-先定下来，再进入 HTML 制作。
-
-### 3）自带审核闭环
-这套系统不只是“生成”，还会审核：
-- 施工图质量
-- HTML 质量
-- PPT 感
-- 投屏可读性
-- 是否忠实原页面意图
-
-### 4）自动化 LLM client 前置处理
-在正式生成页面前，系统会先做：
-- 检查是否已有可用 LLM client
-- 按宿主 OpenClaw 默认模型自动 bootstrap
-- 做 smoke test
-- 在内部修复 adapter 选择
-- 缓存可复用的 client / adapter
-
-### 5）更适合真实汇报场景
-这个仓库特别适合：
-- 领导汇报
-- 战略方案汇报
-- 产品/项目进展汇报
-- 技术架构汇报
-- 结构化方案演示
+- **先施工图，后 HTML**：先把结构定住
+- **自带审核闭环**：不是只生成，还会审
+- **明确追求 PPT 感**：不是泛泛的网页生成
+- **适合逐页生产**：适合和详细页面草稿配合
+- **适合 OpenClaw 工作流**：可以作为生产级 skill / pipeline 使用
 
 ## 仓库结构
 
@@ -273,30 +221,38 @@ LLM client 前置检查 / bootstrap / 修复
     └── validators.py
 ```
 
-## 输入要求
+## 输入建议
 
-每一页建议用 markdown 明确写出这些字段：
+每一页建议用 markdown 写清这些字段：
 - 页码
 - 页面标题
 - 页面目标
-- 上一页关系
-- 下一页关系
+- 上下页关系
 - 风格要求
 - 禁用项
 - 核心内容
-- 特殊硬规则
+- 硬规则
 - 输出路径
 
 详细需求稿越扎实，最终页面质量越高。
 
 ## 理想使用方式
 
-1. 先和用户确认整套 PPT 结构
+1. 先确认整套 PPT 结构
 2. 每页形成一份详细需求稿 markdown
 3. 逐页运行流水线
-4. 让施工图 / 审核 / HTML / 审核自动进行
+4. 让施工图 / 审核 / HTML / 审核自动执行
 5. 只有在阻塞或审核失败时才人工介入
-6. 最终交付经过审核的逐页 HTML
+6. 最终交付逐页审核后的 HTML
+
+## 预览建议
+
+> 后续建议在这里补截图 / before-after 对比图。
+
+最值得补的素材：
+- 1 张整页效果图
+- 1 张局部细节图
+- 1 张“普通 HTML vs PPT 风 HTML”对比图
 
 ## 当前定位
 
@@ -306,13 +262,11 @@ LLM client 前置检查 / bootstrap / 修复
 - 校验器
 - 面向主控的流程约定
 
-适合用来构建一套强质量导向的 PPT HTML 生产系统。
-
 如果你只是想做“看起来现代”的 HTML，很多工具都能做。
 
 但如果你要的是：
 - 真正像汇报页
-- 像正式演示页
-- 像领导可以直接看的页面
+- 真正像演示页
+- 真正像可以拿来讲方案的页面
 
-那这个流水线就是为这件事设计的。
+那这条流水线就是为这件事设计的。
