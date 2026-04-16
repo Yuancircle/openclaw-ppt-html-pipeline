@@ -1,17 +1,18 @@
 ---
 name: ppt-html-pipeline
-description: Build PPT-style single-page HTML slides and small slide batches with the existing OpenClaw PPT page pipeline. Use when the user wants mature PPT-feel HTML (not normal web pages), wants to turn page-by-page detailed requirement drafts into reviewed HTML, wants to batch-build slide pages, or wants to reuse the existing detailed-requirements -> blueprint -> review -> HTML -> review flow.
+description: Build PPT-style single-page HTML slides and small slide batches with the existing OpenClaw PPT page pipeline. Use when the user wants mature PPT-feel HTML (not normal web pages), wants a skill to help turn rough presentation ideas into page-by-page drafts, wants reviewed HTML, wants to batch-build slide pages, or wants to reuse the existing rough idea -> draft generation -> blueprint -> review -> HTML -> review flow.
 ---
 
 # PPT HTML Pipeline
 
 Use this skill when the goal is to **produce PPT-style HTML pages** with the existing pipeline in `/root/.openclaw/workspace/tools`, especially for tasks like:
 - “把这页做成 PPT 风格 HTML”
+- “给我一个粗略主题，先帮我生成逐页草稿，再批量出 HTML”
 - “按任务包生成单页汇报 HTML”
 - “先确认逐页详细需求稿，再批量生成每页 HTML”
 - “批量做第 04–10 页这种页面”
 - “复用现有 HTML 制作脚本 / 流水线”
-- “把逐页详细需求稿 → blueprint → HTML → 审核 跑通”
+- “把逐页草稿 → blueprint → HTML → 审核 跑通”
 
 Do **not** use this for normal websites, landing pages, admin dashboards, or generic web UI work.
 
@@ -68,7 +69,8 @@ Other original workspace source-of-truth files still live in:
 Keep these layers distinct:
 
 ### 1. 逐页详细需求稿
-This is the **user-aligned page planning document**, and it is also the direct pipeline input file.
+This is the **skill-assisted page planning document**, and it is also the direct pipeline input file.
+It can be produced or refined from a rough brief before the pipeline runs.
 It should answer things like:
 - this page's role in the deck
 - what the page must communicate
@@ -80,7 +82,7 @@ It should answer things like:
 
 Recommended pattern:
 - one markdown file per page
-- pre-confirmed with the user before build
+- either user-supplied or skill-generated/refined before build
 - directly used as the file passed into the pipeline
 
 ### 2. Blueprint
@@ -96,8 +98,8 @@ This is the final reviewed page output.
 For real delivery work, the complete preferred flow is:
 
 0. **Run preflight to ensure the host LLM client/config is ready**
-1. **Confirm page-by-page detailed requirement drafts with the user**
-2. **Store one requirement markdown file per page**
+1. **Confirm page-by-page deck goals, audience, and rough direction with the user**
+2. **Let the skill generate or refine one requirement markdown file per page**
 3. **Run the underlying PPT page pipeline once per page, using that page's detailed requirement markdown directly as input**
 4. **Let the pipeline handle blueprint generation/review and HTML generation/review automatically**
 5. **The controller should not participate in the normal internal pipeline stages**
@@ -106,7 +108,7 @@ For real delivery work, the complete preferred flow is:
 
 In short:
 
-`逐页详细需求稿 -> blueprint -> blueprint review -> HTML -> HTML review -> 最终单页 HTML`
+`rough brief -> page draft generation -> blueprint -> blueprint review -> HTML -> HTML review -> final single-page HTML`
 
 ## Preflight requirement
 
@@ -256,6 +258,7 @@ If the same page fails twice, do not brute-force rerun blindly. Fix the requirem
 - Do not let dense content collapse into overlapping lines: if the requested information cannot fit cleanly at the current granularity, split it into fewer words, shorter bullets, fewer on-slide items, or a different layout before generating the final HTML.
 - For roadmap/timeline pages, keep each stage compact and readable: no more than one short goal sentence, 2-3 task bullets, and 2-4 output bullets per stage unless the page draft explicitly requires otherwise.
 - Review must treat text collision, line overlap, and cramped vertical spacing as hard failures requiring layout repair.
+- The page content itself must not contain meta commentary about the slide or the generator, such as “this page will...”, “I want to...”, “not to堆字”, or similar self-referential explanation; only the actual presentation content should appear on the slide.
 - When the page is part of a reviewed multi-page deck, page role and deck continuity matter as much as local prettiness.
 
 ## Recommended file organization
@@ -325,7 +328,7 @@ Read `scripts/validators.py` when:
 ## Working style
 
 When using this skill for delivery work:
-1. confirm whether there is already a page-by-page detailed requirement draft; if not, create one first
+1. confirm whether there is already a page-by-page rough brief or detailed draft; if not, help generate or refine one first
 2. keep one requirement draft markdown per page
 3. pass those page drafts directly into the underlying pipeline
 4. keep output paths explicit
